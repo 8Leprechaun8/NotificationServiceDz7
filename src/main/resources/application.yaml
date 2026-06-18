@@ -1,7 +1,11 @@
+configuration-server:
+  instance:
+    hostname: ${CONFIG_HOST:localhost}
+    port: ${CONFIG_PORT:8071}
 spring:
   application:
     name: notification-service
   profiles:
     active: dev
   config:
-    import: optional:configserver:http://localhost:8071
+    import: optional:configserver:http://${configuration-server.instance.hostname}:${configuration-server.instance.port}
